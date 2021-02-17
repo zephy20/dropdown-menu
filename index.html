@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Menu</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="dropdown">
+          <button
+            class="dropdown-button"
+            id="selectButton"
+            onClick="toggleDropdown()"
+          >
+            Select
+          </button>
+          <ul class="dropdown-menu" id="dropdownContentWrapper">
+            <li class="dropdown-item" onClick="changeActiveItem(this)">
+              List 1
+            </li>
+            <li class="dropdown-item" onClick="changeActiveItem(this)">
+              List 2
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const toggleDropdown = () => {
+      document
+        .getElementById("dropdownContentWrapper")
+        .classList.toggle("show");
+    };
+
+    const changeActiveItem = e => {
+      const selectBtn = document.getElementById("selectButton");
+      selectBtn.innerHTML = e.innerHTML;
+    };
+
+    window.onclick = function (event) {
+      if (!event.target.matches(".dropdown-button")) {
+        const dropdownWrapper = document.getElementsByClassName(
+          "dropdown-menu"
+        )[0];
+        if (dropdownWrapper.classList.contains("show")) {
+          dropdownWrapper.classList.remove("show");
+        }
+      }
+    };
+  </script>
+</html>
